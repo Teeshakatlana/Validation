@@ -1,0 +1,204 @@
+<div ng-controller="CandidateSiteEmployeeControllerInventory">
+<md-content layout="column" class="anim-slide-left" flex ng-if="!materialDetailsView">
+	<div ng-hide ="back_to_isuance">
+		<md-subheader class="jcp-subheader md-subheader md-no-sticky" hide-loading-directive>
+			<div class="layout-row layout-align-end-center">
+				<div layout="row" layout-align="space-between">
+					
+					
+					
+					                          <md-button ng-click="sendId()" ng-disabled="make()">
+												  <md-tooltip md-direction="top"><span translate="Delete"></span></md-tooltip>
+                                                 <md-icon aria-label="Assign" md-font-icon="zmdi zmdi-delete"></md-icon>
+                                             </md-button>
+					
+					<md-button  type="button"   class="md-primary md-button md-ink-ripple cursor-pointer" ng-click="addEmp();"><label translate="Add Employee"></label></md-button>
+                     
+                     
+                     
+                     
+                     
+					
+               <md-button class="md-icon-button" ng-click="refreshList();">
+					<md-tooltip md-direction="top"><span translate="Refresh"></span></md-tooltip>
+					<md-icon aria-label="View List" md-font-icon="zmdi zmdi-refresh"></md-icon>
+			   </md-button>
+			   
+			   <md-button class="md-icon-button"  data-ng-click="uploadInventory($event);" >
+                    <md-icon aria-label="Import Material" md-font-icon="zmdi zmdi-cloud-upload"></md-icon>
+                    <md-tooltip md-direction="top"><label translate="Import Employee_Data"></label> </md-tooltip>
+               </md-button>
+			   <md-button  class="md-icon-button"   ng-click="getCountAndExport($event);">
+                 <md-tooltip md-direction="top"><span translate="Export Employee_Data"></span></md-tooltip>
+                 <md-icon aria-label="download" md-font-icon="zmdi zmdi-download ng-scope material-icons"></md-icon>
+             </md-button>
+			  
+				</div>
+		    </div> 
+		    
+		    
+		  
+		</md-subheader>
+	</div>
+	<div ng-hide="back_to_isuance">
+		<div layout="row" class="overlay" layout-sm="column" layout-align="center center" ng-show="isLoadingDataShow">
+			<img src="../app/assets/img/circularbar.gif" alt="center option" width="65px" height="65px"/>
+		</div>
+		<md-table-container class="sd-data-table-container fixedheader" sfux-height style="overflow:auto;">
+			<table class="md-table-double border-top inventory-table-header-fnt" md-table >
+				<thead md-head md-order="query.order" md-on-reorder="onReorder">
+					<tr md-row>
+<!--
+						<th md-column><label translate="PO Number"></label></th>
+-->
+	
+                        <th md-column class="width50">
+							<md-checkbox  ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()">
+                           <span ng-if="isChecked()"></span>
+                           </md-checkbox>
+					</th>
+                        	
+
+						<th md-column><label translate="Name"></label></th>
+						<th md-column><label translate="Middle_Name"></label><br>
+						<label translate="Last_Name"></label>
+						</th>
+						<!-- <th md-column></th> -->
+						<th md-column><label translate="Gender "></label></th>
+						<th md-column><label translate="Role"></label></th>
+						
+						<th md-column><label translate="Designation"></label></th>
+						<th md-column><label translate="Mobile"></label></th>
+						<th md-column><label translate="Email"></label></th>
+						<th md-column><label translate="Address"></label>
+						
+						</th>
+						<th md-column><label translate="Salary"></label><br>
+						
+						</th>
+						 <th  md-column><span translate="Actions"></span></th>
+
+					</tr>
+				</thead>
+				<tbody md-body>
+
+
+
+					<tr md-row  ng-repeat="emp in EmployeeList track by $index">
+						
+                        	<td md-cell>
+							
+							 <md-checkbox ng-checked="exists(emp, selected)" ng-click="toggle(emp, selected)">
+          
+        </md-checkbox>
+                        </td>
+                        
+                         
+						<td md-cell><span>{{(emp.name | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:25) || "--"}}</td>
+
+
+						<td md-cell><span>{{(emp.mname | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:25) || "--"}}<md-tooltip md-direction="top">{{(emp.mname | HtmlDecodeFilterCore ) || "--"}}</md-tooltip></span>
+
+						<br>
+						<span>
+				{{(emp.lname | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:25) || "--"}}<md-tooltip md-direction="top">{{(emp.lname | HtmlDecodeFilterCore ) || "--"}}</md-tooltip></span>
+
+						</td>
+
+
+
+						<td md-cell><span>{{(emp.gender | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:25) || "--"}}</span><md-tooltip md-direction="top">{{(emp.gender | HtmlDecodeFilterCore ) || "--"}}</md-tooltip></td>
+
+
+						<td md-cell><span>{{(emp.role | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:20) || "--"}}</span><md-tooltip md-direction="top">{{(emp.role | HtmlDecodeFilterCore ) || "--"}}</md-tooltip><br>
+						
+
+						</td>
+
+
+
+
+						<td md-cell><span>{{(emp.designation | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:25) || "--"}}</span><md-tooltip md-direction="top">{{(emp.designation | HtmlDecodeFilterCore ) || "--"}}</md-tooltip></td>
+
+						<td md-cell ><span>{{(emp.mobile | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:25) || "--"}}</span><md-tooltip md-direction="top">{{(emp.mobile | HtmlDecodeFilterCore ) || "--"}}</md-tooltip></td>
+
+		
+
+
+						<td md-cell ><span>{{(emp.email | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:25) || "--"}}</span><md-tooltip md-direction="top">{{(emp.email | HtmlDecodeFilterCore ) || "--"}}</md-tooltip></td>
+
+						
+						
+						<td md-cell><span>{{(emp.address | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:25) || "--"}}</span><md-tooltip md-direction="top">{{(emp.address | HtmlDecodeFilterCore ) || "--"}}</md-tooltip>
+						
+						
+						
+						
+						
+						</td>
+						
+						
+						
+						
+						
+						
+						
+						<td md-cell><span>{{(emp.salary | HtmlDecodeFilterCore | FormatStringEllipsisFilterCore:25) || "--"}}<md-tooltip md-direction="top">{{(emp.salary | HtmlDecodeFilterCore ) || "--"}}</md-tooltip></span>
+
+						
+						
+						
+						</td>
+						
+						  <td md-cell>
+                        <md-menu>
+                            <md-button class="md-icon-button" aria-label="Actions" ng-click="openTableMenu($mdOpenMenu,$event)">
+                                <md-icon aria-label="Actions" md-font-icon="zmdi zmdi-more-vert"></md-icon>
+                            </md-button>
+                            <md-menu-content width="3">
+                                <md-menu-item >
+                                    <md-button ng-click="Confirmedit($event,emp)">
+                                        <md-icon aria-label="Assign" md-font-icon="zmdi zmdi-edit"></md-icon><span translate="edit"></span></md-button>
+                                </md-menu-item>
+                                <md-menu-item >
+                                    <md-button ng-click="confirmEmp(emp,$event)">
+                                        <md-icon aria-label="Assign" md-font-icon="zmdi zmdi-delete"></md-icon><span translate="Delete"></span></md-button>
+                                </md-menu-item>
+                                
+                                
+                                 <md-menu-item >
+									 
+                                    <md-button ng-click="Confirmedit('view',emp)">
+                                        <md-icon aria-label="ASSIGN" md-font-icon="zmdi zmdi-eye ng-scope ng-isolate-scope material-icons"></md-icon><span translate="view"></span></md-button>
+                                </md-menu-item>
+                           </md-menu-content>
+                                    
+                        
+                    </td>
+						
+						
+						
+					
+
+					</tr>
+
+
+
+
+
+				</tbody>
+			</table>
+		</md-table-container> 
+
+		
+		<div ng-if="EmployeeList.length==0 && !isLoadingDataShow" class="material-expression-custom">
+			
+			<span class="img"></span>
+			<label translate="Sorry, We didn't find anything"></label>
+		</div>
+		<md-table-pagination md-label="{{label}}" md-limit="query.limit" md-limit-options="rowPerPageLimit" md-page="query.page" md-total="{{employeeDetailsCount}}" md-on-paginate="onPaginate" md-page-select class="pagination1"></md-table-pagination>
+	</div>
+</md-content>
+</div>
+
+
