@@ -1,0 +1,202 @@
+
+
+   <md-dialog aria-label="Assign Solution Partner" ng-cloak>
+      <form id="trigger_material_domain_form" name="trigger_material_domain_form" validate-non-visible-controls="false"  validate-on-form-submit="false" novalidate>
+         <div layout="row" class="overlay" layout-sm="column" layout-align="center center" ng-show="isLoadingDataShow">
+            <img src="../app/assets/img/circularbar.gif" alt="center option" width="65px" height="65px"/>
+        </div>
+        <md-toolbar>
+             <div class="md-toolbar-tools">
+        <span class="md-subhead" translate="Employee details"></span>
+         <span flex></span>
+               
+               <md-button class="md-icon-button" ng-click="cancel();resetMaterialDomainAddForm();">
+                  <md-icon aria-label="ASSIGN" md-font-icon="zmdi zmdi-close"></md-icon>
+               </md-button>
+            </div>
+         </md-toolbar>
+         
+         <md-dialog-content  style="width:900px;">
+			 
+			 
+			 
+			        
+			       
+            
+               <div label="Information" class="md-status-primary md-status-button md-ink-ripple">
+                  <div class="md-dialog-content">
+                     <div class="siteinputvaluesection">
+						 <!-- first div-->
+						 
+						 
+						 
+<form  id="trigger_material_domain" name="trigger_material_domain" validate-non-visible-controls="false"  validate-on-form-submit="false" novalidate>                       
+	
+	
+	 <div class="siteinputrow nomargin" layout="row" layout-align="space-between start">
+							
+					 
+							 <md-input-container flex="10" class="md-block form-group">
+                             <label translate={{prefix}}>{{employee.prefix}}</label>
+                            <md-select ng-model="employee.prefix">
+                            <md-option>Mr</md-option>
+                            <md-option>Miss</md-option>
+                             <md-option>Mrs</md-option>
+                            
+                              </md-select>
+                              </md-input-container>
+						   
+                          <md-input-container flex="20" class="md-block form-group">
+                            <label translate="Name"></label>
+                            <input required ng-model="employee.name" 
+                              type="text" maxlength="50" >
+                              </md-input-container>
+                              
+                              
+                              <md-input-container flex="20" class="md-block form-group">
+                            <label translate="Middle Name"></label>
+                            <input required ng-model="employee.mname" 
+                              type="text" maxlength="50">
+                              </md-input-container>
+                              
+                              <md-input-container flex="20" class="md-block form-group">
+                            <label translate="Last Name"></label>
+                            <input required ng-model="employee.lname" 
+                              type="text" maxlength="50" >
+                              </md-input-container>
+                             
+                            
+                             </div>
+                             
+                             
+                             <div class="siteinputrow nomargin" layout="row" layout-align="space-between start">
+							<md-input-container flex="70" class="md-block form-group">
+                             <label translate={{gender}}>{{employee.gender}}</label>
+                            <md-select ng-model="employee.gender">
+                            <md-option>Female</md-option>
+                            <md-option>Male</md-option></md-option>
+                             
+                            
+                              </md-select>
+                              </md-input-container>
+                            
+                           </div>
+                           
+                           
+                           
+                            <div class="siteinputrow nomargin" layout="row" layout-align="space-between start">
+								 <md-input-container flex="70" class="md-block form-group">
+                            <label translate="Role"></label>
+                            <input required ng-model="employee.role" 
+                              type="text" maxlength="50"/>
+                              </md-input-container>
+                             
+                            
+                           </div>
+                           
+                           
+                            <div class="siteinputrow nomargin" layout="row" layout-align="space-between start">
+								 <md-input-container flex="70" class="md-block form-group">
+                            <label translate="Designation"></label>
+                            <input required ng-model="employee.designation" 
+                              type="text" maxlength="50" >
+                              </md-input-container>
+                             
+                            
+                           </div>
+                           
+                           
+                           
+                           
+                            <div class="siteinputrow nomargin" layout="row" layout-align="space-between start">
+								 <md-input-container flex="70" class="md-block form-group">
+                            <label translate="Mobile-No"></label>
+                            <input required ng-model="employee.mobile" 
+                              type="text" maxlength="30" >
+                              </md-input-container>
+                             
+                            
+                           </div>
+                           
+                           
+                            <div class="siteinputrow nomargin" layout="row" layout-align="space-between start">
+								
+                            <md-input-container flex="70" class="md-block form-group">
+                            <label translate="example@gmail.com"></label>
+                            <input required ng-model="employee.email" 
+                              type="email" maxlength="50" >
+                              </md-input-container>
+                           </div>
+                           
+                           
+                            <div class="siteinputrow nomargin" layout="row" layout-align="space-between start">
+								<md-input-container flex="50" class="md-block form-group">
+                            <label translate="Address"></label>
+                            <input required ng-model="employee.address" 
+                              type="text" maxlength="70" >
+                              </md-input-container>
+                              
+                              
+                          
+                           
+                           
+                           
+                           
+                            <div class="siteinputrow nomargin" layout="row" layout-align="space-between start">
+                            <md-input-container flex="70" class="md-block form-group">
+                            <label translate="Salary"></label>
+                            <input required ng-model="employee.salary" 
+                              type="text" maxlength="30"  >
+                              </md-input-container>
+                           </div>
+                           
+                          
+                            
+                         
+                           
+                             <div class="siteinputrow nomargin" layout="row" layout-align="space-between start">
+                            <md-input-container flex="70" class="md-block form-group">
+                            <label translate="Project"></label>
+                            <input required ng-model="employee.project" 
+                              type="text" maxlength="30"  >
+                              </md-input-container>
+                           </div>
+                           
+                            
+                            
+                          
+                           
+                           
+                           
+                           
+                           
+                            <div class="siteinputrow nomargin" layout="row" layout-align="space-between start"> 
+							  <md-button class="md-primary" type="button" ng-click="save(employee);">Add</md-button>
+                           </div>
+                           
+                           
+                           
+                           
+			</form>
+                           
+                           
+                           
+                </div>           
+               </div>
+              </div>
+              
+              
+             
+             
+             
+              </md-dialog-content>
+              
+           
+       </md-dialog-actions>
+       
+       
+       
+      </form>
+   </md-dialog>
+
+

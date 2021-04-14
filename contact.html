@@ -1,0 +1,71 @@
+
+
+<md-dialog aria-label="Assign Solution Partner" style="min-width:550px;max-width:600px;" ng-cloak>
+
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2><span class="md-subhead" translate="Export Employee Data"></span></h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon aria-label="Close" md-font-icon="zmdi zmdi-close"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+		<div layout="row" class="overlay" layout-sm="column" layout-align="center center" ng-show="isLoadingDataShow">
+			<img src="../app/assets/img/circularbar.gif" alt="center option" width="65px" height="65px"/>
+		</div>
+        <md-content class="md-padding" style="background-color: #fff;">
+            <form name="exportForm">
+				
+
+                <ul class="filter-ulin">
+                    <li>
+                        <strong>
+                            <span translate="Total Expected Records:"></span>
+                        </strong>
+                        <span ng-bind="employeeDetailsCount"></span>
+                    </li>
+                </ul>
+			</form>
+        </md-content>
+
+    </md-dialog-content>
+    
+    <md-dialog-actions class="md-dialog-action-footer">
+        <md-button class="" ng-click="cancel()">
+            <span translate="Cancel"></span>
+        </md-button>
+        <!--
+			<md-button  class=" md-primary "  data-ng-click="downloadSiteData()">Download</md-button>
+			ng-disabled = "siteCount === 0"
+-->
+        <md-menu md-position-mode="left bottom">
+            <md-button class="md-primary"  ng-click="openTableMenu($mdOpenMenu, $event)"
+                >
+                <span translate="EXPORT"></span>
+                <md-icon md-font-icon="zmdi zmdi-chevron-down zmd-fw" hide-xs="" aria-hidden="true"></md-icon>
+            </md-button>
+            <md-menu-content width="2">
+                <md-menu-item>
+                    <md-button data-ng-click="exportMaterial('XLSX');">
+                        <span translate="EXCEL"></span>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button data-ng-click="exportMaterial('PDF');">
+                        <span translate="PDF"></span>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button data-ng-click="exportMaterial('CSV');">
+                        <span translate="CSV"></span>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+
+    </md-dialog-actions>
+
+</md-dialog>
